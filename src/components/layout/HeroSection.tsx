@@ -737,14 +737,14 @@ function OperationsSlide() {
           </span>
         </div>
 
-        <h1 className="mb-5 text-[2.45rem] font-extrabold leading-[1.04] tracking-[-0.045em] text-slate-950 opacity-0 animate-slide-fade-up animate-delay-200 sm:text-5xl md:text-6xl lg:text-[3.65rem] xl:text-[4.2rem]">
+        <h2 className="mb-5 text-[2.45rem] font-extrabold leading-[1.04] tracking-[-0.045em] text-slate-950 opacity-0 animate-slide-fade-up animate-delay-200 sm:text-5xl md:text-6xl lg:text-[3.65rem] xl:text-[4.2rem]">
           Manage Every Business
           <span className="block">Operation From One</span>
 
           <span className="block bg-gradient-to-r from-indigo-600 via-blue-600 to-cyan-600 bg-clip-text text-transparent animate-gradient-text">
             Connected Platform.
           </span>
-        </h1>
+        </h2>
 
         <p className="mx-auto mb-7 max-w-xl text-[15px] leading-7 text-slate-600 opacity-0 animate-slide-fade-up animate-delay-300 sm:text-lg sm:leading-8 lg:mx-0">
           Manage sales, CRM, employee joining, attendance, tasks, projects,
@@ -1077,14 +1077,14 @@ function CustomSoftwareSlide() {
           </span>
         </div>
 
-        <h1 className="mb-5 text-[2.45rem] font-extrabold leading-[1.04] tracking-[-0.045em] text-slate-950 opacity-0 animate-slide-fade-up animate-delay-200 sm:text-5xl md:text-6xl lg:text-[3.65rem] xl:text-[4.2rem]">
+        <h2 className="mb-5 text-[2.45rem] font-extrabold leading-[1.04] tracking-[-0.045em] text-slate-950 opacity-0 animate-slide-fade-up animate-delay-200 sm:text-5xl md:text-6xl lg:text-[3.65rem] xl:text-[4.2rem]">
           Software Designed Around
           <span className="block">How Your Business</span>
 
           <span className="block bg-gradient-to-r from-violet-600 via-blue-600 to-cyan-600 bg-clip-text text-transparent animate-gradient-text">
             Actually Works.
           </span>
-        </h1>
+        </h2>
 
         <p className="mx-auto mb-7 max-w-xl text-[15px] leading-7 text-slate-600 opacity-0 animate-slide-fade-up animate-delay-300 sm:text-lg sm:leading-8 lg:mx-0">
           AeroState Lab designs secure, scalable, and easy-to-use cloud software

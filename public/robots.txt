@@ -1,0 +1,9 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+
+# Disallow internal or build paths if any
+Disallow: /dist/
+
+# Sitemap location
+Sitemap: https://aerostatelab.com/sitemap.xml

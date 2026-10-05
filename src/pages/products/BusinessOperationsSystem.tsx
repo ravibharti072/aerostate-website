@@ -3,6 +3,7 @@ import {
   type ReactNode,
 } from "react";
 import { Link } from "react-router-dom";
+import SEO from "../../components/shared/SEO";
 
 interface ModuleItem {
   title: string;
@@ -690,6 +691,30 @@ function BusinessOperationsSystem() {
 
   return (
     <div className="overflow-hidden bg-white text-slate-900">
+      <SEO
+        title="Business Operations Management System | AeroState Lab"
+        description="Connect and automate sales CRM, employee onboarding, attendance, task tracking, payments, and team coordination from a single business operations platform."
+        keywords="business operations management system, enterprise operations software, sales CRM, attendance management, task management software India UAE, Aerostate Lab"
+        canonical="https://aerostatelab.com/products/business-operations-management-system"
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "SoftwareApplication",
+          "name": "AeroState Business Operations Management System",
+          "applicationCategory": "BusinessApplication",
+          "operatingSystem": "Cloud-based Web Application",
+          "description": "Comprehensive business operations platform integrating sales CRM, workforce onboarding, task coordination, and financial tracking.",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "INR"
+          },
+          "provider": {
+            "@type": "Organization",
+            "name": "Aerostate Lab",
+            "url": "https://aerostatelab.com"
+          }
+        }}
+      />
       {/* Hero */}
       <section className="relative isolate overflow-hidden border-b border-slate-200 bg-gradient-to-br from-indigo-50 via-white to-cyan-50">
         <div

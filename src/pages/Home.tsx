@@ -1,6 +1,7 @@
 import HeroSection from "../components/layout/HeroSection";
 import FeatureCard from "../components/shared/FeatureCard";
 import TrustRow from "../components/shared/TrustRow";
+import SEO from "../components/shared/SEO";
 
 import {
   HrIllustration,
@@ -247,6 +248,39 @@ function Home() {
 
   return (
     <div className="bg-white text-gray-900">
+      <SEO
+        title="Aerostate Lab | Custom ERP, RMS & Business Management Software"
+        description="Aerostate Lab builds custom ERP, RMS, POS, inventory, CRM, HRMS, finance, and business operations software for enterprises across India, UAE, and globally."
+        keywords="Aerostate Lab, custom ERP software, ERP software company Haridwar, business management software India, custom software development UAE, POS system, cloud ERP, inventory management, HRMS"
+        canonical="https://aerostatelab.com/"
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "SoftwareApplication",
+          "name": "Aerostate Lab Business Operations Platform",
+          "applicationCategory": "BusinessApplication",
+          "operatingSystem": "Cloud-based Web Application",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "INR"
+          },
+          "provider": {
+            "@type": "Organization",
+            "name": "Aerostate Lab",
+            "url": "https://aerostatelab.com",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Haridwar",
+              "addressRegion": "Uttarakhand",
+              "addressCountry": "IN"
+            },
+            "areaServed": [
+              { "@type": "Country", "name": "India" },
+              { "@type": "Country", "name": "United Arab Emirates" }
+            ]
+          }
+        }}
+      />
       <HeroSection />
 
       <TrustRow />
@@ -370,8 +404,12 @@ function Home() {
               {/* Main image */}
               <div className="relative overflow-hidden rounded-b-[18px] bg-gradient-to-br from-slate-100 via-white to-blue-100">
                 <img
-                  src="/data-pipeline.png"
-                  alt="AeroState centralized business analytics and data processing"
+                  src="/data-pipeline.webp"
+                  alt="Aerostate centralized business analytics and data processing"
+                  width={1677}
+                  height={938}
+                  loading="lazy"
+                  decoding="async"
                   className="aspect-[16/10] w-full object-cover object-center"
                 />
 

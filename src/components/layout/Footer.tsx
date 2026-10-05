@@ -13,6 +13,14 @@ interface FooterLink {
   to: string;
 }
 
+interface ClientPortalLink {
+  label: string;
+  description: string;
+  href: string;
+  iconText: string;
+  iconStyle: string;
+}
+
 interface SocialLink {
   label: string;
   href: string;
@@ -103,6 +111,37 @@ function WhatsAppIcon() {
       aria-hidden="true"
     >
       <path d="M12.04 2a9.82 9.82 0 0 0-8.45 14.82L2.2 22l5.3-1.39A9.8 9.8 0 1 0 12.04 2Zm0 17.93a8.1 8.1 0 0 1-4.13-1.13l-.3-.18-3.15.83.84-3.07-.2-.31A8.1 8.1 0 1 1 12.04 19.93Zm4.44-6.08c-.24-.12-1.44-.71-1.66-.79-.22-.08-.39-.12-.55.12-.16.24-.63.79-.77.95-.14.16-.28.18-.53.06-.24-.12-1.03-.38-1.96-1.21-.72-.65-1.21-1.44-1.35-1.68-.14-.25-.02-.38.11-.5.11-.11.24-.28.36-.42.12-.14.16-.24.24-.41.08-.16.04-.3-.02-.42-.06-.13-.55-1.32-.75-1.81-.2-.47-.4-.41-.55-.41h-.46c-.16 0-.43.06-.65.31-.22.24-.85.83-.85 2.03 0 1.2.87 2.36.99 2.52.12.16 1.72 2.62 4.16 3.68.58.25 1.03.4 1.39.51.58.19 1.11.16 1.53.1.47-.07 1.44-.59 1.64-1.16.2-.57.2-1.06.14-1.16-.06-.1-.22-.16-.46-.28Z" />
+    </svg>
+  );
+}
+
+function ExternalLinkIcon({
+  className = "",
+}: {
+  className?: string;
+}) {
+  return (
+    <svg
+      className={`h-4 w-4 flex-none ${className}`}
+      viewBox="0 0 24 24"
+      fill="none"
+      aria-hidden="true"
+    >
+      <path
+        d="M14 5h5v5M19 5l-8 8"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+
+      <path
+        d="M19 13v5a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h5"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   );
 }
@@ -200,6 +239,33 @@ function Footer() {
     {
       label: "Contact",
       to: "/contact",
+    },
+    {
+      label: "Haridwar & Uttarakhand",
+      to: "/locations/haridwar",
+    },
+    {
+      label: "Dubai & UAE",
+      to: "/locations/dubai",
+    },
+  ];
+
+  const clientPortalLinks: ClientPortalLink[] = [
+    {
+      label: "Loyalty Reward System",
+      description: "Access rewards, points and redemption tools.",
+      href: "https://rms.aerostatelab.com",
+      iconText: "LR",
+      iconStyle:
+        "border-cyan-400/30 bg-cyan-400/10 text-cyan-300",
+    },
+    {
+      label: "Company ERP",
+      description: "Access business operations and team tools.",
+      href: "https://companyerp.aerostatelab.com",
+      iconText: "ER",
+      iconStyle:
+        "border-indigo-400/30 bg-indigo-400/10 text-indigo-300",
     },
   ];
 
@@ -306,7 +372,7 @@ function Footer() {
 
       {/* Main footer */}
       <div className="mx-auto w-full max-w-[1440px] px-4 pb-8 pt-14 sm:px-6 lg:px-10 lg:pt-16 xl:px-16">
-        <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-[1.45fr_0.8fr_1fr_0.8fr] lg:gap-10 xl:grid-cols-[1.55fr_0.85fr_1fr_0.8fr]">
+        <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-[1.45fr_0.8fr_1fr_1.15fr] lg:gap-10 xl:grid-cols-[1.55fr_0.85fr_1fr_1.2fr]">
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-1">
             <Link
@@ -427,7 +493,7 @@ function Footer() {
             </ul>
           </div>
 
-          {/* Company and products */}
+          {/* Company, products and client access */}
           <div>
             <h3 className="text-xs font-bold uppercase tracking-[0.16em] text-white">
               Company
@@ -469,6 +535,56 @@ function Footer() {
                 </Link>
               </li>
             </ul>
+
+            <div className="mt-9 border-t border-slate-800 pt-7">
+              <h3 className="text-xs font-bold uppercase tracking-[0.16em] text-white">
+                Client Access
+              </h3>
+
+              <p className="mt-3 text-xs leading-5 text-slate-500">
+                Existing customers can open their assigned software
+                portal.
+              </p>
+
+              <div className="mt-4 space-y-3">
+                {clientPortalLinks.map((portal) => (
+                  <a
+                    key={portal.href}
+                    href={portal.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex items-start gap-3 rounded-2xl border border-slate-800 bg-white/[0.035] p-3 transition-all duration-300 hover:-translate-y-1 hover:border-blue-400/30 hover:bg-blue-400/[0.07]"
+                  >
+                    <span
+                      className={`flex h-10 w-10 flex-none items-center justify-center rounded-xl border text-[9px] font-extrabold tracking-[0.08em] ${portal.iconStyle}`}
+                    >
+                      {portal.iconText}
+                    </span>
+
+                    <span className="min-w-0 flex-1">
+                      <span className="block text-sm font-bold leading-5 text-slate-200 transition-colors group-hover:text-white">
+                        {portal.label}
+                      </span>
+
+                      <span className="mt-1 block text-[10px] leading-4 text-slate-500">
+                        {portal.description}
+                      </span>
+                    </span>
+
+                    <ExternalLinkIcon className="mt-1 text-slate-600 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-blue-300" />
+                  </a>
+                ))}
+              </div>
+
+              <Link
+                to="/contact"
+                className="group mt-4 inline-flex items-center gap-2 text-xs font-bold text-blue-300 transition-colors hover:text-blue-200"
+              >
+                Need Login Help?
+
+                <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+              </Link>
+            </div>
           </div>
         </div>
 

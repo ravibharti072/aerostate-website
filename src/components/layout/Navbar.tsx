@@ -51,6 +51,7 @@ interface IndustryGroup {
   items: IndustryItem[];
 }
 
+
 type MobileDropdown =
   | "products"
   | "solutions"
@@ -102,6 +103,7 @@ function ArrowIcon({
     </svg>
   );
 }
+
 
 function MenuIcon() {
   return (
@@ -521,6 +523,8 @@ function Navbar() {
     },
   ];
 
+
+
   const isProductsActive =
     location.pathname.startsWith("/products");
 
@@ -535,6 +539,7 @@ function Navbar() {
     "/services/custom-software-development";
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsMobileMenuOpen(false);
     setMobileDropdown(null);
   }, [location.pathname, location.hash]);
@@ -554,7 +559,7 @@ function Navbar() {
 
   useEffect(() => {
     function handleEscape(
-      event: globalThis.KeyboardEvent
+      event: globalThis.KeyboardEvent,
     ) {
       if (event.key === "Escape") {
         setIsMobileMenuOpen(false);
@@ -564,13 +569,13 @@ function Navbar() {
 
     window.addEventListener(
       "keydown",
-      handleEscape
+      handleEscape,
     );
 
     return () => {
       window.removeEventListener(
         "keydown",
-        handleEscape
+        handleEscape,
       );
     };
   }, []);
@@ -620,10 +625,10 @@ function Navbar() {
   }, [location.pathname, location.hash]);
 
   function toggleMobileDropdown(
-    dropdown: Exclude<MobileDropdown, null>
+    dropdown: Exclude<MobileDropdown, null>,
   ) {
     setMobileDropdown((current) =>
-      current === dropdown ? null : dropdown
+      current === dropdown ? null : dropdown,
     );
   }
 
@@ -714,7 +719,7 @@ function Navbar() {
               <ChevronDownIcon className="opacity-70 transition-transform duration-300 group-hover:rotate-180" />
             </button>
 
-            <div className="pointer-events-none invisible absolute left-0 top-full z-[120] w-[560px] translate-y-2 pt-2 opacity-0 transition-all duration-200 group-hover:pointer-events-auto group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
+            <div className="pointer-events-none invisible absolute left-0 top-full z-[120] w-[560px] translate-y-2 pt-2 opacity-0 transition-all duration-200 group-hover:pointer-events-auto group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:pointer-events-auto group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100">
               <div className="overflow-hidden rounded-2xl border border-slate-700 bg-[#07101f] shadow-[0_28px_80px_rgba(0,0,0,0.58)]">
                 <div className="border-b border-slate-700 bg-[#0b1729] px-5 py-4">
                   <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-blue-300">
@@ -817,7 +822,7 @@ function Navbar() {
               <ChevronDownIcon className="opacity-70 transition-transform duration-300 group-hover:rotate-180" />
             </Link>
 
-            <div className="pointer-events-none invisible absolute left-1/2 top-full z-[120] w-[780px] -translate-x-1/2 translate-y-2 pt-2 opacity-0 transition-all duration-200 group-hover:pointer-events-auto group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
+            <div className="pointer-events-none invisible absolute left-1/2 top-full z-[120] w-[780px] -translate-x-1/2 translate-y-2 pt-2 opacity-0 transition-all duration-200 group-hover:pointer-events-auto group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:pointer-events-auto group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100">
               <div className="overflow-hidden rounded-2xl border border-slate-700 bg-[#07101f] shadow-[0_28px_80px_rgba(0,0,0,0.58)]">
                 <div className="flex items-center justify-between gap-6 border-b border-slate-700 bg-[#0b1729] px-5 py-4">
                   <div>
@@ -956,7 +961,7 @@ function Navbar() {
               <ChevronDownIcon className="opacity-70 transition-transform duration-300 group-hover:rotate-180" />
             </Link>
 
-            <div className="pointer-events-none invisible absolute left-1/2 top-full z-[120] w-[690px] -translate-x-1/2 translate-y-2 pt-2 opacity-0 transition-all duration-200 group-hover:pointer-events-auto group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
+            <div className="pointer-events-none invisible absolute left-1/2 top-full z-[120] w-[690px] -translate-x-1/2 translate-y-2 pt-2 opacity-0 transition-all duration-200 group-hover:pointer-events-auto group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:pointer-events-auto group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100">
               <div className="overflow-hidden rounded-2xl border border-slate-700 bg-[#07101f] shadow-[0_28px_80px_rgba(0,0,0,0.58)]">
                 <div className="flex items-center justify-between gap-6 border-b border-slate-700 bg-[#0b1729] px-5 py-4">
                   <div>
@@ -1078,6 +1083,14 @@ function Navbar() {
             </div>
           </div>
 
+
+          <NavLink
+            to="/case-studies"
+            className={desktopLinkClass}
+          >
+            Case Studies
+          </NavLink>
+
           <NavLink
             to="/our-approach"
             className={desktopLinkClass}
@@ -1091,24 +1104,9 @@ function Navbar() {
           >
             Why Choose Us
           </NavLink>
-
-          <NavLink
-            to="/case-studies"
-            className={desktopLinkClass}
-          >
-            Case Studies
-          </NavLink>
         </div>
-
         {/* Desktop actions */}
         <div className="hidden flex-none items-center justify-self-end gap-2 xl:flex">
-          <Link
-            to="/login"
-            className="inline-flex min-h-10 items-center justify-center rounded-xl border border-slate-700 bg-slate-900/80 px-4 py-2 text-sm font-semibold text-slate-200 transition-all duration-300 hover:-translate-y-0.5 hover:border-slate-500 hover:bg-slate-800 hover:text-white"
-          >
-            Login
-          </Link>
-
           <Link
             to="/contact"
             className="inline-flex min-h-10 items-center justify-center rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 px-5 py-2 text-sm font-semibold text-white shadow-lg shadow-blue-500/20 transition-all duration-300 hover:-translate-y-0.5 hover:from-blue-500 hover:to-cyan-400 hover:shadow-blue-500/30"
@@ -1116,6 +1114,7 @@ function Navbar() {
             Contact Us
           </Link>
         </div>
+
 
         {/* Mobile menu button */}
         <button
@@ -1306,6 +1305,7 @@ function Navbar() {
                     className="flex w-full items-center justify-between rounded-xl border border-blue-400/30 bg-blue-500/10 px-3 py-3 text-left text-sm font-bold text-blue-300"
                   >
                     View All Solutions
+
                     <ArrowIcon />
                   </button>
 
@@ -1387,6 +1387,7 @@ function Navbar() {
                     className="flex w-full items-center justify-between rounded-xl border border-teal-400/30 bg-teal-500/10 px-3 py-3 text-left text-sm font-bold text-teal-300"
                   >
                     View All Industries
+
                     <ArrowIcon />
                   </button>
 
@@ -1421,12 +1422,25 @@ function Navbar() {
                     className="flex items-center justify-between rounded-xl border border-teal-400/20 bg-teal-400/[0.06] px-3 py-3 text-sm font-bold text-teal-300"
                   >
                     Discuss Industry Requirements
+
                     <ArrowIcon />
                   </Link>
                 </div>
               </div>
             </div>
 
+            
+            <Link
+              to="/case-studies"
+              className={`rounded-xl px-4 py-3 text-sm font-bold transition-colors ${
+                location.pathname === "/case-studies"
+                  ? "bg-blue-500/10 text-blue-300 shadow-[inset_0_0_0_1px_rgba(96,165,250,0.14)]"
+                  : "text-slate-200 hover:bg-white/[0.05] hover:text-white"
+              }`}
+            >
+              Case Studies
+            </Link>
+            
             <Link
               to="/our-approach"
               className={`rounded-xl px-4 py-3 text-sm font-bold transition-colors ${
@@ -1449,28 +1463,12 @@ function Navbar() {
               Why Choose Us
             </Link>
 
-            <Link
-              to="/case-studies"
-              className={`rounded-xl px-4 py-3 text-sm font-bold transition-colors ${
-                location.pathname === "/case-studies"
-                  ? "bg-blue-500/10 text-blue-300 shadow-[inset_0_0_0_1px_rgba(96,165,250,0.14)]"
-                  : "text-slate-200 hover:bg-white/[0.05] hover:text-white"
-              }`}
-            >
-              Case Studies
-            </Link>
 
-            <div className="mt-2 grid grid-cols-2 gap-3 border-t border-slate-800 pt-4 sm:hidden">
-              <Link
-                to="/login"
-                className="flex min-h-11 items-center justify-center rounded-xl border border-slate-700 bg-slate-900 text-sm font-bold text-slate-200"
-              >
-                Login
-              </Link>
 
+            <div className="mt-2 border-t border-slate-800 pt-4">
               <Link
                 to="/contact"
-                className="flex min-h-11 items-center justify-center rounded-xl bg-blue-600 text-sm font-bold text-white"
+                className="flex min-h-11 w-full items-center justify-center rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 px-5 text-sm font-bold text-white shadow-lg shadow-blue-500/20"
               >
                 Contact Us
               </Link>

@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
+import SEO from "../../components/shared/SEO";
 
 interface FeatureItem {
   title: string;
@@ -321,6 +322,30 @@ function LoyaltyRewardSystem() {
 
   return (
     <div className="overflow-hidden bg-white text-slate-900">
+      <SEO
+        title="Loyalty & Customer Reward Management System | AeroState Lab"
+        description="Transform customer purchases into strong repeat business with custom loyalty points, multi-product rewards, and transparent cash redemption software."
+        keywords="customer loyalty program software, retail rewards system, cash redemption software, paint dealer loyalty program, customer retention software India UAE"
+        canonical="https://aerostatelab.com/products/loyalty-reward-system"
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "SoftwareApplication",
+          "name": "AeroState Loyalty and Customer Reward System",
+          "applicationCategory": "BusinessApplication",
+          "operatingSystem": "Cloud-based Web Application",
+          "description": "Enterprise customer loyalty, points accumulation, and reward redemption platform for retailers, distributors, and dealers.",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "INR"
+          },
+          "provider": {
+            "@type": "Organization",
+            "name": "Aerostate Lab",
+            "url": "https://aerostatelab.com"
+          }
+        }}
+      />
       {/* Hero */}
       <section className="relative isolate overflow-hidden border-b border-slate-200 bg-gradient-to-br from-blue-50 via-white to-cyan-50">
         <div

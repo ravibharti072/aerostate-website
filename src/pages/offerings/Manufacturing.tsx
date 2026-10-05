@@ -1,5 +1,6 @@
-import { useEffect, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { Link } from "react-router-dom";
+import SEO from "../../components/shared/SEO";
 
 import {
   AlertTriangle,
@@ -10,6 +11,7 @@ import {
   Building2,
   Check,
   CheckCircle2,
+  ChevronDown,
   ClipboardCheck,
   ClipboardList,
   Cloud,
@@ -102,6 +104,31 @@ function CheckIcon({
 }
 
 function Manufacturing() {
+  const [openFaq, setOpenFaq] = useState<number | null>(0);
+
+  const manufacturingFaqs = [
+    {
+      question: "How does the software handle Bill of Materials (BOM) and multi-level production assemblies?",
+      answer:
+        "AeroState Manufacturing ERP supports multi-level BOMs, tracking sub-assemblies, raw material consumption rates, scrap percentages, and standard vs. actual component usage.",
+    },
+    {
+      question: "Can the system track batch numbers, expiry dates, and lot genealogy for pharma and chemical plants?",
+      answer:
+        "Yes. Every raw material intake and finished batch is tagged with a unique batch number, inspection certificate, expiry date, and backward/forward traceability records.",
+    },
+    {
+      question: "How does the system prevent shop-floor material wastage and unauthorized stock issuance?",
+      answer:
+        "Stock issuance to the shop floor requires verified production work orders. Real-time variances between BOM standards and actual material consumed are immediately flagged for supervisory review.",
+    },
+    {
+      question: "Can plant supervisors manage machine maintenance schedules and downtime?",
+      answer:
+        "Yes. The platform includes preventative maintenance reminders, breakdown logging, mean time to repair (MTTR) metrics, and machine operator allocation.",
+    },
+  ];
+
   useEffect(() => {
     document.title =
       "Manufacturing Operations Management Software | AeroState Lab";
@@ -430,6 +457,45 @@ function Manufacturing() {
 
   return (
     <div className="overflow-hidden bg-white text-slate-900">
+      <SEO
+        title="Manufacturing ERP & Production Software | AeroState Lab"
+        description="Optimize production planning, bill of materials (BOM), raw material tracking, and shop floor management for factories and manufacturing plants across India, Haridwar SIDCUL, and UAE."
+        keywords="manufacturing ERP software, production management software, BOM management, shop floor tracking, industrial software Haridwar SIDCUL India, factory ERP UAE"
+        canonical="https://aerostatelab.com/solutions/manufacturing"
+        schema={[
+          {
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            "name": "AeroState Manufacturing Operations Platform",
+            "applicationCategory": "BusinessApplication",
+            "operatingSystem": "Cloud-based Web Application",
+            "description":
+              "Enterprise manufacturing and production operations ERP covering BOM, batch genealogy, machine tracking, and shop floor dispatches.",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "INR",
+            },
+            "provider": {
+              "@type": "Organization",
+              "name": "Aerostate Lab",
+              "url": "https://aerostatelab.com",
+            },
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: manufacturingFaqs.map((faq) => ({
+              "@type": "Question",
+              name: faq.question,
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: faq.answer,
+              },
+            })),
+          },
+        ]}
+      />
       {/* Hero */}
       <section className="relative isolate overflow-hidden border-b border-slate-200 bg-gradient-to-br from-blue-50 via-white to-cyan-50">
         <div
@@ -1277,6 +1343,59 @@ function Manufacturing() {
                 </p>
               </article>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="border-b border-slate-200 bg-slate-50/70 py-16 sm:py-24">
+        <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-6 lg:px-10">
+          <div className="mx-auto max-w-3xl text-center">
+            <span className="text-xs font-bold uppercase tracking-[0.16em] text-blue-600">
+              Manufacturing ERP Questions
+            </span>
+            <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-slate-950 sm:text-4xl">
+              Frequently Asked Questions About Manufacturing Software
+            </h2>
+            <p className="mt-4 text-base leading-7 text-slate-600">
+              Technical answers regarding Bill of Materials (BOM), batch traceability, scrap reduction, and machine maintenance.
+            </p>
+          </div>
+
+          <div className="mx-auto mt-12 max-w-3xl space-y-4">
+            {manufacturingFaqs.map((faq, index) => {
+              const isOpen = openFaq === index;
+              return (
+                <div
+                  key={index}
+                  className="rounded-2xl border border-slate-200 bg-white transition-colors"
+                >
+                  <button
+                    type="button"
+                    onClick={() => setOpenFaq(isOpen ? null : index)}
+                    className="flex w-full items-center justify-between p-6 text-left"
+                    aria-expanded={isOpen}
+                  >
+                    <span className="text-base font-bold text-slate-900 sm:text-lg">
+                      {faq.question}
+                    </span>
+                    <ChevronDown
+                      className={`h-5 w-5 flex-none text-slate-400 transition-transform duration-200 ${
+                        isOpen ? "rotate-180 text-blue-600" : ""
+                      }`}
+                    />
+                  </button>
+
+                  {isOpen && (
+                    <div className="border-t border-slate-100 px-6 pb-6 pt-4">
+                      <p className="text-sm leading-7 text-slate-600">
+                        {faq.answer}
+                      </p>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>

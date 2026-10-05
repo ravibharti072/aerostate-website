@@ -1,5 +1,6 @@
 import { useEffect, type ReactNode } from "react";
 import { Link } from "react-router-dom";
+import SEO from "../../components/shared/SEO";
 
 interface ServiceCard {
   title: string;
@@ -435,6 +436,28 @@ function CustomSoftwareDevelopment() {
 
   return (
     <div className="overflow-hidden bg-white text-slate-900">
+      <SEO
+        title="Custom Software Development Services | AeroState Lab"
+        description="Bespoke cloud software, custom ERP, CRM, and automated workflow systems engineered to solve unique business processes for enterprises in India, UAE, and worldwide."
+        keywords="custom software development, bespoke ERP development, software development company India Haridwar, cloud software engineering UAE, workflow automation software"
+        canonical="https://aerostatelab.com/services/custom-software-development"
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "name": "Custom Software Development",
+          "serviceType": "Enterprise Software Engineering & Cloud Application Development",
+          "description": "Custom enterprise software engineering, bespoke ERP/CRM development, workflow automation, and cloud management dashboards.",
+          "provider": {
+            "@type": "Organization",
+            "name": "Aerostate Lab",
+            "url": "https://aerostatelab.com"
+          },
+          "areaServed": [
+            { "@type": "Country", "name": "India" },
+            { "@type": "Country", "name": "United Arab Emirates" }
+          ]
+        }}
+      />
       {/* Hero section */}
       <section className="relative isolate overflow-hidden border-b border-slate-200 bg-gradient-to-br from-violet-50 via-white to-blue-50">
         <div

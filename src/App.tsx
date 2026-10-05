@@ -8,6 +8,7 @@ import {
 
 import Footer from "./components/layout/Footer";
 import Navbar from "./components/layout/Navbar";
+import DynamicRouteSEO from "./components/shared/DynamicRouteSEO";
 
 // Main pages
 import About from "./pages/About";
@@ -17,6 +18,10 @@ import Industries from "./pages/Industries";
 import OurApproach from "./pages/OurApproach";
 import Solutions from "./pages/Solutions";
 import WhyChooseUs from "./pages/WhyChooseUs";
+
+// Regional pages
+import HaridwarLocation from "./pages/locations/HaridwarLocation";
+import DubaiLocation from "./pages/locations/DubaiLocation";
 
 // Product pages
 import BusinessOperationsSystem from "./pages/products/BusinessOperationsSystem";
@@ -49,6 +54,7 @@ import Trading from "./pages/offerings/Trading";
 function App() {
   return (
     <Router>
+      <DynamicRouteSEO />
       <div className="flex min-h-screen flex-col bg-slate-950 font-sans text-slate-200 antialiased">
         <Navbar />
 
@@ -80,6 +86,28 @@ function App() {
             <Route
               path="/why-choose-us"
               element={<WhyChooseUs />}
+            />
+
+            {/* Regional presence */}
+            <Route
+              path="/locations/haridwar"
+              element={<HaridwarLocation />}
+            />
+
+            <Route
+              path="/locations/dubai"
+              element={<DubaiLocation />}
+            />
+
+            {/* Fast redirect alias for UAE */}
+            <Route
+              path="/uae"
+              element={
+                <Navigate
+                  to="/locations/dubai"
+                  replace
+                />
+              }
             />
 
             {/* Custom software development */}

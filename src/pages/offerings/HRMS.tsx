@@ -1,5 +1,6 @@
-import { useEffect, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { Link } from "react-router-dom";
+import SEO from "../../components/shared/SEO";
 
 import {
   ArrowLeft,
@@ -10,6 +11,7 @@ import {
   CalendarCheck,
   Check,
   CheckCircle2,
+  ChevronDown,
   ChevronRight,
   ClipboardCheck,
   Clock3,
@@ -92,6 +94,31 @@ function CheckIcon({
 }
 
 function HRMS() {
+  const [openFaq, setOpenFaq] = useState<number | null>(0);
+
+  const hrmsFaqs = [
+    {
+      question: "Can this HRMS integrate with physical biometric fingerprint and face recognition devices?",
+      answer:
+        "Yes. AeroState HRMS supports direct integration with popular biometric attendance systems (eSSL, Matrix, ZKTeco) as well as mobile-based check-ins for distributed and field teams.",
+    },
+    {
+      question: "Is the payroll module compliant with Indian statutory standards and UAE WPS?",
+      answer:
+        "Yes. The system automatically computes PF, ESI, Professional Tax, and TDS for Indian entities, and supports Wage Protection System (WPS) SIF file generation for UAE companies.",
+    },
+    {
+      question: "Can we configure custom role permissions for different departments and managers?",
+      answer:
+        "Yes. The platform provides granular role-based access control (RBAC), ensuring department heads, HR managers, accountants, and general employees only access data permitted for their role.",
+    },
+    {
+      question: "Can interns and contract laborers be tracked separately from permanent staff?",
+      answer:
+        "Yes. You can manage multi-tier workforce categories with distinct probation periods, stipend rules, attendance policies, and exit clearances.",
+    },
+  ];
+
   useEffect(() => {
     document.title =
       "HR and Workforce Management Software | AeroState Lab";
@@ -363,6 +390,45 @@ function HRMS() {
 
   return (
     <div className="overflow-hidden bg-white text-slate-900">
+      <SEO
+        title="HR & Workforce Management Software | AeroState Lab"
+        description="Streamline employee onboarding, attendance, role-based portal permissions, and workforce coordination with AeroState's cloud HRMS software."
+        keywords="HRMS software India, workforce management software, employee onboarding system, attendance tracking, HR management software UAE, AeroState Lab"
+        canonical="https://aerostatelab.com/solutions/hrms"
+        schema={[
+          {
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            "name": "AeroState HRMS & Workforce Management",
+            "applicationCategory": "BusinessApplication",
+            "operatingSystem": "Cloud-based Web Application",
+            "description":
+              "Comprehensive Human Resource Management System for attendance, onboarding, payroll integration, and workforce management.",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "INR",
+            },
+            "provider": {
+              "@type": "Organization",
+              "name": "Aerostate Lab",
+              "url": "https://aerostatelab.com",
+            },
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: hrmsFaqs.map((faq) => ({
+              "@type": "Question",
+              name: faq.question,
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: faq.answer,
+              },
+            })),
+          },
+        ]}
+      />
       {/* Hero */}
       <section className="relative isolate overflow-hidden border-b border-slate-200 bg-gradient-to-br from-blue-50 via-white to-cyan-50">
         <div
@@ -1092,6 +1158,59 @@ function HRMS() {
                 </p>
               </article>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="border-b border-slate-200 bg-slate-50/70 py-16 sm:py-24">
+        <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-6 lg:px-10">
+          <div className="mx-auto max-w-3xl text-center">
+            <span className="text-xs font-bold uppercase tracking-[0.16em] text-blue-600">
+              Workforce Software Questions
+            </span>
+            <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-slate-950 sm:text-4xl">
+              Frequently Asked Questions About HRMS
+            </h2>
+            <p className="mt-4 text-base leading-7 text-slate-600">
+              Clear answers regarding biometric attendance integrations, statutory payroll compliance, and user roles.
+            </p>
+          </div>
+
+          <div className="mx-auto mt-12 max-w-3xl space-y-4">
+            {hrmsFaqs.map((faq, index) => {
+              const isOpen = openFaq === index;
+              return (
+                <div
+                  key={index}
+                  className="rounded-2xl border border-slate-200 bg-white transition-colors"
+                >
+                  <button
+                    type="button"
+                    onClick={() => setOpenFaq(isOpen ? null : index)}
+                    className="flex w-full items-center justify-between p-6 text-left"
+                    aria-expanded={isOpen}
+                  >
+                    <span className="text-base font-bold text-slate-900 sm:text-lg">
+                      {faq.question}
+                    </span>
+                    <ChevronDown
+                      className={`h-5 w-5 flex-none text-slate-400 transition-transform duration-200 ${
+                        isOpen ? "rotate-180 text-blue-600" : ""
+                      }`}
+                    />
+                  </button>
+
+                  {isOpen && (
+                    <div className="border-t border-slate-100 px-6 pb-6 pt-4">
+                      <p className="text-sm leading-7 text-slate-600">
+                        {faq.answer}
+                      </p>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
